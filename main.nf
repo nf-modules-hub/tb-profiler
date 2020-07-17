@@ -37,7 +37,7 @@ process tbProfiler {
     tuple genomeName, file(genomeReads) from ch_tbProfiler_in
 
     output:
-    path("""results/${genomeName}.results.json""") into ch_tbProfiler_out
+    file("""results/${genomeName}.results.json""") into ch_tbProfiler_out
 
 
     script:
