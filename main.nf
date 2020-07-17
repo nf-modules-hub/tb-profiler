@@ -44,7 +44,7 @@ process tbProfiler {
 
     """
     tb-profiler profile -1 ${genomeReads[0]} -2 ${genomeReads[1]}  -t 4 -p $genomeName
-    cp results/${genomeName}.results.json .
+    cp results/${genomeName}.results.json ./
     """
     
     
