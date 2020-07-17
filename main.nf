@@ -6,31 +6,44 @@ params
 ################
 */
 
-ch_refFILE = Channel.value("$baseDir/refFILE")
 
-inputFilePattern = "./*_{R1,R2}.fastq.gz"
+params.saveBy = 'copy'
+params.trimmed= true
+
+
+/*
+###############
+Tb-profiler
+###############
+*/
+
+inputUntrimmedRawFilePattern = "./*_{R1,R2}.fastq.gz"
+
+inputTrimmedRawFilePattern = "./*_{R1,R2}.p.fastq.gz"
+
+inputRawFilePattern = params.trimmed ? inputTrimmedRawFilePattern : inputUntrimmedRawFilePattern
+
+
 Channel.fromFilePairs(inputFilePattern)
-        .into {  ch_in_PROCESS }
+        .into {  ch_tbProfiler_in }
 
 
 
-process process {
-#    publishDir 'results/PROCESS'
-#    container 'PROCESS_CONTAINER'
-
+process tbProfiler {
+    publishDir 'results/tbProfiler', mode: params.saveBy
+    container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     input:
-    set genomeFileName, file(genomeReads) from ch_in_PROCESS
+    tuple genomeName, file(genomeReads) from ch_tbProfiler_in
 
     output:
-    path("""${PROCESS_OUTPUT}""") into ch_out_PROCESS
-
+    tuple  path(fq_1_paired), path(fq_2_paired) into ch_tbProfiler_out
 
     script:
-    #FIXME
-    genomeName= genomeFileName.toString().split("\\_")[0]
+
+    """
+    tb-profiler profile -1 ${genomeReads[0]} -2 ${genomeReads[1]}  -t 4 -p $genomeName
+    """
     
-    """
-    CLI PROCESS
-    """
+    
 }
