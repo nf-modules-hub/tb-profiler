@@ -24,7 +24,7 @@ inputTrimmedRawFilePattern = "./*_{R1,R2}.p.fastq.gz"
 inputRawFilePattern = params.trimmed ? inputTrimmedRawFilePattern : inputUntrimmedRawFilePattern
 
 
-Channel.fromFilePairs(inputFilePattern)
+Channel.fromFilePairs(inputRawFilePattern)
         .into {  ch_tbProfiler_in }
 
 
