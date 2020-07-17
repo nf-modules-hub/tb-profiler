@@ -37,7 +37,8 @@ process tbProfiler {
     tuple genomeName, file(genomeReads) from ch_tbProfiler_in
 
     output:
-    tuple  path(fq_1_paired), path(fq_2_paired) into ch_tbProfiler_out
+    path("""${genomeName}""") into ch_tbProfiler_out
+
 
     script:
 
