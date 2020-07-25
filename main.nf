@@ -37,7 +37,11 @@ Channel.fromFilePairs(inputRawFilePattern)
 
 
 process tbProfiler {
-    publishDir params.resultsDir, mode: params.saveBy
+    /*
+     The downstream tb-profiler collate expects all individual results to be in
+     a folder called results
+     */
+    publishDir """${params.resultsDir}/results""", mode: params.saveBy
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     when:
