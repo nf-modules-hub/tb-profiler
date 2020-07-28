@@ -15,30 +15,22 @@ params
 
 params.resultsDir = 'results/tbProfiler'
 params.saveBy = 'copy'
-params.trimmed = true
 params.collate = false
-
-
+params.filePattern = "./*_{R1,R2}.fastq.gz"
 
 /*
 #==============================================
 tb-profiler
 #==============================================
 */
-inputUntrimmedRawFilePattern = "./*_{R1,R2}.fastq.gz"
 
-inputTrimmedRawFilePattern = "./*_{R1,R2}.p.fastq.gz"
-
-inputRawFilePattern = params.trimmed ? inputTrimmedRawFilePattern : inputUntrimmedRawFilePattern
-
-
-Channel.fromFilePairs(inputRawFilePattern)
-        .into {  ch_tbProfiler_in }
+Channel.fromFilePairs(params.filePattern)
+        .into {  ch_in_tbProfiler }
 
 
 process tbProfiler {
     /*
-     The downstream tb-profiler collate expects all individual results to be in
+     The downstream process `tb-profiler collate` expects all individual results to be in
      a folder called results
      */
     publishDir """${params.resultsDir}/results""", mode: params.saveBy
@@ -48,10 +40,10 @@ process tbProfiler {
     !params.collate
 
     input:
-    tuple genomeName, file(genomeReads) from ch_tbProfiler_in
+    tuple genomeName, file(genomeReads) from ch_in_tbProfiler
 
     output:
-    path("""${genomeName}.results.json""") into ch_tbProfiler_out
+    path("""${genomeName}.results.json""") into ch_out_tbProfiler
 
 
     script:
