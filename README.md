@@ -46,7 +46,7 @@ For more information please refer [Nextflow documentation](https://www.nextflow.
 
 ## Customizing the script
 
-The sole purpose of process wrappers in `nextflow-hub` is to keep the code small, clean and hackable with some  basic knowledge of `nextflow` scripting is required in this case.
+The sole purpose of process wrappers in `nextflow-hub` is to keep the code small, clean and hackable with some basic knowledge of `nextflow` scripting.
 
 If you have specific requirements, you are encouraged to fork/clone and update your version to accomodate your needs. 
 
