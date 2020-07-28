@@ -14,44 +14,36 @@ params
 */
 
 params.resultsDir = 'results/tbProfiler'
-params.saveBy = 'copy'
-params.trimmed = true
+params.saveMode = 'copy'
 params.collate = false
-
-
+params.filePattern = "./*_{R1,R2}.fastq.gz"
 
 /*
 #==============================================
 tb-profiler
 #==============================================
 */
-inputUntrimmedRawFilePattern = "./*_{R1,R2}.fastq.gz"
 
-inputTrimmedRawFilePattern = "./*_{R1,R2}.p.fastq.gz"
-
-inputRawFilePattern = params.trimmed ? inputTrimmedRawFilePattern : inputUntrimmedRawFilePattern
-
-
-Channel.fromFilePairs(inputRawFilePattern)
-        .into {  ch_tbProfiler_in }
+Channel.fromFilePairs(params.filePattern)
+        .set {  ch_in_tbProfiler }
 
 
 process tbProfiler {
     /*
-     The downstream tb-profiler collate expects all individual results to be in
+     The downstream process `tb-profiler collate` expects all individual results to be in
      a folder called results
      */
-    publishDir """${params.resultsDir}/results""", mode: params.saveBy
+    publishDir """${params.resultsDir}/results""", mode: params.saveMode
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     when:
     !params.collate
 
     input:
-    tuple genomeName, file(genomeReads) from ch_tbProfiler_in
+    tuple genomeName, file(genomeReads) from ch_in_tbProfiler
 
     output:
-    path("""${genomeName}.results.json""") into ch_tbProfiler_out
+    path("""${genomeName}.results.json""") into ch_out_tbProfiler
 
 
     script:
@@ -65,10 +57,10 @@ process tbProfiler {
 
 
 Channel.fromPath("""${params.resultsDir}/results""")
-        .into { ch_in_tbProfiler_collate }
+        .set { ch_in_tbProfiler_collate }
 
 process tbProfiler_collate {
-    publishDir params.resultsDir, mode: params.saveBy
+    publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     when:
