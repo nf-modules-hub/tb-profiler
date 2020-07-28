@@ -25,7 +25,7 @@ tb-profiler
 */
 
 Channel.fromFilePairs(params.filePattern)
-        .into {  ch_in_tbProfiler }
+        .set {  ch_in_tbProfiler }
 
 
 process tbProfiler {
@@ -57,7 +57,7 @@ process tbProfiler {
 
 
 Channel.fromPath("""${params.resultsDir}/results""")
-        .into { ch_in_tbProfiler_collate }
+        .set { ch_in_tbProfiler_collate }
 
 process tbProfiler_collate {
     publishDir params.resultsDir, mode: params.saveBy
