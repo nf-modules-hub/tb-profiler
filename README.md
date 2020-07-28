@@ -24,6 +24,14 @@ For collating the individual results obtained by running `tb-profiler` you can s
 nextflow run https://github.com/nextflow-hub/tb-profiler --collate
 ```
 
+- `filePattern`
+
+By default, the process assumes the files to follow the `*_{R1,R2}.fastq.gz` pattern, which could be customized using this option
+
+```
+nextflow run https://github.com/nextflow-hub/tb-profiler --filePattern './*_{1,2}.fastq.gz'
+```
+
 - `resultsDir`
 
 By default, it stores the result files locally inside the `results` directory.
