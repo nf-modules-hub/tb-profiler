@@ -29,7 +29,7 @@ nextflow run https://github.com/nextflow-hub/tb-profiler --collate
 By default, it stores the result files locally inside the `results` directory.
 
 ```
-nextflow run https://github.com/nextflow-hub/FIXME --resultsDir /path/to/custom/resultsDir
+nextflow run https://github.com/nextflow-hub/tb-profiler --resultsDir /path/to/custom/resultsDir
 ```
 
 - `saveMode`
