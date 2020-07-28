@@ -14,7 +14,7 @@ params
 */
 
 params.resultsDir = 'results/tbProfiler'
-params.saveBy = 'copy'
+params.saveMode = 'copy'
 params.collate = false
 params.filePattern = "./*_{R1,R2}.fastq.gz"
 
@@ -33,7 +33,7 @@ process tbProfiler {
      The downstream process `tb-profiler collate` expects all individual results to be in
      a folder called results
      */
-    publishDir """${params.resultsDir}/results""", mode: params.saveBy
+    publishDir """${params.resultsDir}/results""", mode: params.saveMode
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     when:
@@ -60,7 +60,7 @@ Channel.fromPath("""${params.resultsDir}/results""")
         .set { ch_in_tbProfiler_collate }
 
 process tbProfiler_collate {
-    publishDir params.resultsDir, mode: params.saveBy
+    publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
 
     when:

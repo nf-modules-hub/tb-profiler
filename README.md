@@ -24,13 +24,25 @@ For collating the individual results obtained by running `tb-profiler` you can s
 nextflow run https://github.com/nextflow-hub/tb-profiler --collate
 ```
 
-- `saveBy`
-
-By default, the pipeline publishes the results in the `resultsDir` by copying the relevant output.
-
 - `resultsDir`
 
 By default, it stores the result files locally inside the `results` directory.
+
+```
+nextflow run https://github.com/nextflow-hub/FIXME --resultsDir /path/to/custom/resultsDir
+```
+
+- `saveMode`
+
+By default, the pipeline publishes the results in the `resultsDir` by copying the relevant output.
+
+You can update this behavior by simply specifying the alternative such as `move` or `link` etc. 
+
+```
+nextflow run https://github.com/nextflow-hub/tb-profiler --saveMode move
+```
+
+For more information please refer [Nextflow documentation](https://www.nextflow.io/docs/latest/process.html#publishdir)
 
 ## Customizing the script
 
