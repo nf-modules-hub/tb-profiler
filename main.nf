@@ -35,6 +35,7 @@ process tbProfiler {
      */
     publishDir """${params.resultsDir}/results""", mode: params.saveMode
     container 'quay.io/biocontainers/tb-profiler:2.8.6--pypy_0'
+    errorStrategy 'ignore'
 
     when:
     !params.collate
