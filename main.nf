@@ -43,14 +43,15 @@ process tbProfiler {
     tuple genomeName, file(genomeReads) from ch_in_tbProfiler
 
     output:
-    path("""${genomeName}.results.json""") into ch_out_tbProfiler
+    tuple path("""${genomeName}.results.txt"""),
+                 path("""${genomeName}.results.json""") into ch_out_tbProfiler
 
 
     script:
 
     """
-    tb-profiler profile -1 ${genomeReads[0]} -2 ${genomeReads[1]}  -t 4 -p $genomeName
-    cp results/${genomeName}.results.json .
+    tb-profiler profile -1 ${genomeReads[0]} -2 ${genomeReads[1]}  -t 4 -p $genomeName --txt
+    cp results/* ./
     """
 
 }
