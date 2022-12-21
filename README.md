@@ -10,7 +10,7 @@
 ## Usage
 
 ```
-nextflow run https://github.com/nextflow-hub/tb-profiler
+nextflow run https://github.com/nf-modules-hub/tb-profiler
 ```
 
 ## Options
@@ -21,7 +21,7 @@ nextflow run https://github.com/nextflow-hub/tb-profiler
 For collating the individual results obtained by running `tb-profiler` you can set pass this option.
 
 ```
-nextflow run https://github.com/nextflow-hub/tb-profiler --collate
+nextflow run https://github.com/nf-modules-hub/tb-profiler --collate
 ```
 
 - `filePattern`
@@ -29,7 +29,7 @@ nextflow run https://github.com/nextflow-hub/tb-profiler --collate
 By default, the process assumes the files to follow the `*_{R1,R2}.fastq.gz` pattern, which could be customized using this option
 
 ```
-nextflow run https://github.com/nextflow-hub/tb-profiler --filePattern './*_{1,2}.fastq.gz'
+nextflow run https://github.com/nf-modules-hub/tb-profiler --filePattern './*_{1,2}.fastq.gz'
 ```
 
 - `resultsDir`
@@ -37,7 +37,7 @@ nextflow run https://github.com/nextflow-hub/tb-profiler --filePattern './*_{1,2
 By default, it stores the result files locally inside the `results` directory.
 
 ```
-nextflow run https://github.com/nextflow-hub/tb-profiler --resultsDir /path/to/custom/resultsDir
+nextflow run https://github.com/nf-modules-hub/tb-profiler --resultsDir /path/to/custom/resultsDir
 ```
 
 - `saveMode`
@@ -47,14 +47,14 @@ By default, the pipeline publishes the results in the `resultsDir` by copying th
 You can update this behavior by simply specifying the alternative such as `move` or `link` etc. 
 
 ```
-nextflow run https://github.com/nextflow-hub/tb-profiler --saveMode move
+nextflow run https://github.com/nf-modules-hub/tb-profiler --saveMode move
 ```
 
 For more information please refer [Nextflow documentation](https://www.nextflow.io/docs/latest/process.html#publishdir)
 
 ## Customizing the script
 
-The sole purpose of process wrappers in `nextflow-hub` is to keep the code small, clean and hackable with some basic knowledge of `nextflow` scripting.
+The sole purpose of process wrappers in `nf-modules-hub` is to keep the code small, clean and hackable with some basic knowledge of `nextflow` scripting.
 
 If you have specific requirements, you are encouraged to fork/clone and update your version to accomodate your needs. 
 
