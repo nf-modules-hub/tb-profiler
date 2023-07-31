@@ -15,39 +15,30 @@ nextflow run https://github.com/nf-modules-hub/tb-profiler
 
 ## Options
 
-
-- `collate`
-
-For collating the individual results obtained by running `tb-profiler` you can set pass this option.
-
-```
-nextflow run https://github.com/nf-modules-hub/tb-profiler --collate
-```
-
-- `filePattern`
+- `file_pattern`
 
 By default, the process assumes the files to follow the `*_{R1,R2}.fastq.gz` pattern, which could be customized using this option
 
 ```
-nextflow run https://github.com/nf-modules-hub/tb-profiler --filePattern './*_{1,2}.fastq.gz'
+nextflow run https://github.com/nf-modules-hub/tb-profiler --file_pattern './*_{1,2}.fastq.gz'
 ```
 
-- `resultsDir`
+- `outdir`
 
 By default, it stores the result files locally inside the `results` directory.
 
 ```
-nextflow run https://github.com/nf-modules-hub/tb-profiler --resultsDir /path/to/custom/resultsDir
+nextflow run https://github.com/nf-modules-hub/tb-profiler --outdir /path/to/custom/resultsDir
 ```
 
-- `saveMode`
+- `publish_dir_mode`
 
-By default, the pipeline publishes the results in the `resultsDir` by copying the relevant output.
+By default, the pipeline publishes the results in the `outdir` by copying the relevant output.
 
 You can update this behavior by simply specifying the alternative such as `move` or `link` etc. 
 
 ```
-nextflow run https://github.com/nf-modules-hub/tb-profiler --saveMode move
+nextflow run https://github.com/nf-modules-hub/tb-profiler --publish_dir_mode move
 ```
 
 For more information please refer [Nextflow documentation](https://www.nextflow.io/docs/latest/process.html#publishdir)
