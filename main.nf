@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-include { TBPROFILER_PROFILE } from "./modules/nf-modules-hub/tbprofiler"
+include { TBPROFILER_PROFILE } from "./modules/nf-modules-hub/profile"
 
 /*
 #==============================================
