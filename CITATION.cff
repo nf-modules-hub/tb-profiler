@@ -1,0 +1,14 @@
+cff-version: 0.9.5.1
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Sharma"
+  given-names: "Abhinav"
+  orcid: "https://orcid.org/0000-0002-6402-6993"
+- family-names: "Conceição"
+  given-names: "Emilyn Costa"
+  orcid: "https://orcid.org/0000-0002-7445-6620"
+title: "nf-modules-hub/tb-profiler"
+version: 0.9.5.1
+#doi: 10.5281/zenodo.1234
+date-released: 2023-07-31
+url: "https://github.com/nf-modules-hub/tb-profiler/new/master"
