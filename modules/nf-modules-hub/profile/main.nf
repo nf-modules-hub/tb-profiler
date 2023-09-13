@@ -2,10 +2,10 @@ process TBPROFILER_PROFILE {
     tag "$meta.id"
     label 'process_medium'
 
-    conda "bioconda::tb-profiler=4.4.2"
+    conda "bioconda::tb-profiler=5.0.0"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/tb-profiler:4.4.2--pyh7cba7a3_0':
-        'biocontainers/tb-profiler:4.4.2--pyh7cba7a3_0' }"
+        'https://depot.galaxyproject.org/singularity/tb-profiler:5.0.0--pyh7cba7a3_0':
+        'biocontainers/tb-profiler:5.0.0--pyh7cba7a3_0' }"
 
     input:
     tuple val(meta), path(reads)
