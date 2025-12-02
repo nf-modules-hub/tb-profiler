@@ -7,6 +7,12 @@ process TBPROFILER_PROFILE {
         'docker://quay.io/biocontainers/tb-profiler:6.6.6--pyhdfd78af_0':
         'quay.io/biocontainers/tb-profiler:6.6.6--pyhdfd78af_0' }"
 
+
+        // 'oras://community.wave.seqera.io/library/tb-profiler:6.6.6--8b9d559e17fc9178':
+        // 'community.wave.seqera.io/library/tb-profiler:6.6.6--1c88f329f36a1c0c' }"
+
+
+
     input:
     tuple val(meta), path(reads)
 
